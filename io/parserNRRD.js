@@ -177,19 +177,19 @@ X.parserNRRD.prototype.parse = function(container, object, data, flag) {
       _spaceX*this.vectors[0].x,
       _spaceX*this.vectors[1].x,
       _spaceX*this.vectors[2].x,
-      _spaceX*this.space_origin[0]);
+      _spaceX*this.space_origin.x);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       1,
       _spaceY*this.vectors[0].y,
       _spaceY*this.vectors[1].y,
       _spaceY*this.vectors[2].y,
-      _spaceY*this.space_origin[1]);
+      _spaceY*this.space_origin.y);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       2,
       _spaceZ*this.vectors[0].z,
       _spaceZ*this.vectors[1].z,
       _spaceZ*this.vectors[2].z,
-      _spaceZ*this.space_origin[2]);
+      _spaceZ*this.space_origin.z);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       3,
       0,
