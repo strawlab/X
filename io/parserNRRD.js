@@ -273,6 +273,9 @@ X.parserNRRD.prototype.parseHeader = function(header) {
       && this.encoding !== 'gz') {
     throw new Error('Only raw or gz/gzip encoding is allowed');
   }
+  if (typeof this.space_origin === 'undefined') {
+    this.space_origin = new goog.math.Vec3(0, 0, 0);
+  }
   if (!this.vectors) {
     this.vectors = [ new goog.math.Vec3(1, 0, 0), new goog.math.Vec3(0, 1, 0),
         new goog.math.Vec3(0, 0, 1) ];
