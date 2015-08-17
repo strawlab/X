@@ -115,12 +115,12 @@ X.parserNRRD.prototype.parse = function(container, object, data, flag) {
   // get the image dimensions
   object._dimensions = [ this.sizes[0], this.sizes[1], this.sizes[2] ];
   // spacing
-  var spacingX = new goog.math.Vec3(this.vectors[0][0], this.vectors[0][1],
-      this.vectors[0][2]).magnitude();
-  var spacingY = new goog.math.Vec3(this.vectors[1][0], this.vectors[1][1],
-      this.vectors[1][2]).magnitude();
-  var spacingZ = new goog.math.Vec3(this.vectors[2][0], this.vectors[2][1],
-      this.vectors[2][2]).magnitude();
+  var spacingX = new goog.math.Vec3(this.vectors[0].x, this.vectors[0].y,
+      this.vectors[0].z).magnitude();
+  var spacingY = new goog.math.Vec3(this.vectors[1].x, this.vectors[1].y,
+      this.vectors[1].z).magnitude();
+  var spacingZ = new goog.math.Vec3(this.vectors[2].x, this.vectors[2].y,
+      this.vectors[2].z).magnitude();
   object._spacing = [ spacingX, spacingY, spacingZ ];
   // .. and set the default threshold
   // only if the threshold was not already set
@@ -174,21 +174,21 @@ X.parserNRRD.prototype.parse = function(container, object, data, flag) {
   else{
     goog.vec.Mat4.setRowValues(IJKToRAS,
       0,
-      _spaceX*this.vectors[0][0],
-      _spaceX*this.vectors[1][0],
-      _spaceX*this.vectors[2][0],
+      _spaceX*this.vectors[0].x,
+      _spaceX*this.vectors[1].x,
+      _spaceX*this.vectors[2].x,
       _spaceX*this.space_origin[0]);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       1,
-      _spaceY*this.vectors[0][1],
-      _spaceY*this.vectors[1][1],
-      _spaceY*this.vectors[2][1],
+      _spaceY*this.vectors[0].y,
+      _spaceY*this.vectors[1].y,
+      _spaceY*this.vectors[2].y,
       _spaceY*this.space_origin[1]);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       2,
-      _spaceZ*this.vectors[0][2],
-      _spaceZ*this.vectors[1][2],
-      _spaceZ*this.vectors[2][2],
+      _spaceZ*this.vectors[0].z,
+      _spaceZ*this.vectors[1].z,
+      _spaceZ*this.vectors[2].z,
       _spaceZ*this.space_origin[2]);
     goog.vec.Mat4.setRowValues(IJKToRAS,
       3,
