@@ -372,7 +372,9 @@ X.parserNRRD.prototype.fieldFunctions = {
     return this.space = data;
   },
   'space origin' : function(data) {
-    return this.space_origin = data.split("(")[1].split(")")[0].split(",");
+    var tmp_str_array = data.split("(")[1].split(")")[0].split(",");
+    var v = tmp_str_array.map(parseFloat);
+    return this.space_origin = new goog.math.Vec3(v[0], v[1], v[2]);
   },
   'space directions' : function(data) {
     var f, parts, v;
