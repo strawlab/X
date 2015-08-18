@@ -115,12 +115,9 @@ X.parserNRRD.prototype.parse = function(container, object, data, flag) {
   // get the image dimensions
   object._dimensions = [ this.sizes[0], this.sizes[1], this.sizes[2] ];
   // spacing
-  var spacingX = new goog.math.Vec3(this.vectors[0].x, this.vectors[0].y,
-      this.vectors[0].z).magnitude();
-  var spacingY = new goog.math.Vec3(this.vectors[1].x, this.vectors[1].y,
-      this.vectors[1].z).magnitude();
-  var spacingZ = new goog.math.Vec3(this.vectors[2].x, this.vectors[2].y,
-      this.vectors[2].z).magnitude();
+  var spacingX = this.vectors[0].magnitude();
+  var spacingY = this.vectors[1].magnitude();
+  var spacingZ = this.vectors[2].magnitude();
   object._spacing = [ spacingX, spacingY, spacingZ ];
   // .. and set the default threshold
   // only if the threshold was not already set
@@ -395,7 +392,11 @@ X.parserNRRD.prototype.fieldFunctions = {
           return _results2;
         })());
       }
-      return _results;
+      var _results_vec = [];
+      for (var i=0; i<3; i++) {
+        _results_vec.push( new goog.math.Vec3( _results[i][0], _results[i][1], _results[i][2]));
+      }
+      return _results_vec;
     })();
   },
   'spacings' : function(data) {
